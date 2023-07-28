@@ -1,12 +1,12 @@
 #include "shell.h"
 /**
- * conv_error_num - converts a string to an integer
+ * err_num - converts a string to an integer
  * @s: the string to be converted
  * Return: 0 if no numbers in string,
  * converted integer else -1
  *
  */
-int conv_error_num(char *s)
+int err_num(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
@@ -34,7 +34,7 @@ int conv_error_num(char *s)
  * Return: 0 if no numbers in string,
  * converted integer else -1
  */
-void print_error(info_y *info, char *estr)
+void print_error(info_s *info, char *estr)
 {
 	puts_err(info->prog_name);
 	puts_err(": ");
@@ -45,13 +45,13 @@ void print_error(info_y *info, char *estr)
 	puts_err(estr);
 }
 /**
- * print_dec_num - function prints a decimal (integer) number (base 10)
+ * print_dec - function prints a decimal (integer) number (base 10)
  * @input: the input
  * @fd: the filedescriptor to write to
  *
  * Return: number of characters printed
  */
-int print_dec_num(int input, int fd)
+int print_dec(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
@@ -83,14 +83,14 @@ int print_dec_num(int input, int fd)
 	return (count);
 }
 /**
- * change_base_num - converter function, a clone of itoa
+ * change_base - converter function, a clone of itoa
  * @num: number
  * @base: base
  * @flags: argument flags
  *
  * Return: string
  */
-char *change_base_num(long int num, int base, int flags)
+char *change_base(long int num, int base, int flags)
 {
 	char sign = 0;
 	char *ptr;
@@ -117,13 +117,13 @@ char *change_base_num(long int num, int base, int flags)
 }
 
 /**
- * rep_com - function replaces first instance of '#' with '\0'
+ * handle_comments - function replaces first instance of '#' with '\0'
  * @buf: address of the string to modify
  *
  * Return: 0;
  */
 
-void rep_com(char *buf)
+void handle_comments(char *buf)
 {
 	int i;
 

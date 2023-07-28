@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * func_exe - checks if a file is an exe cmd
- * @info: info struct
- * @path: file path
+ * is_executable - determines if a file is an executable command
+ * @info: the info struct
+ * @path: path to the file
  *
- * Return: 1 if true, 0 alternative
+ * Return: 1 if true, 0 otherwise
  */
-bool func_exe(info_y *info, char *path)
+bool is_executable(info_s *info, char *path)
 {
 	struct stat st;
 
@@ -23,14 +23,14 @@ bool func_exe(info_y *info, char *path)
 }
 
 /**
- * duplicate_char - dup char
+ * dup_chars - duplicates characters
  * @pathstr: the PATH string
- * @start: index start
- * @stop: index stop
+ * @start: starting index
+ * @stop: stopping index
  *
  * Return: pointer to new buffer
  */
-char *duplicate_char(char *pathstr, int start, int stop)
+char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
 	int i = 0, k = 0;
@@ -43,14 +43,14 @@ char *duplicate_char(char *pathstr, int start, int stop)
 }
 
 /**
- * file_path_check - finds this cmd in the PATH string
+ * check_file_in_path - finds this cmd in the PATH string
  * @info: the info struct
  * @pathstr: the PATH string
- * @cmd: command used to find
+ * @cmd: the cmd to find
  *
- * Return:  path, cmd or NULL
+ * Return: full path of cmd if found or NULL
  */
-char *file_path_check(info_y *info, char *pathstr, char *cmd)
+char *check_file_in_path(info_s *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
 	char *path;

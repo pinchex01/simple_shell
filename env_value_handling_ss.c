@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * _getenvfunc - gets the value of an environ variable
+ * _getenv - gets the value of an environ variable
  * @info: contains simulated arguments for a function pointer,
  * @name: env var name
  *
  * Return: the value
  */
 
-char *_getenvfunc(info_y *info, const char *name)
+char *_getenv(info_s *info, const char *name)
 {
 	char *p;
 	list_s *node = info->env;
@@ -24,14 +24,14 @@ char *_getenvfunc(info_y *info, const char *name)
 }
 
 /**
- * check_setenvfunc - Checks if an environment variable has been set.
+ * check_setenv - Checks if an environment variable has been set.
  * @info: contains simulated arguments for a function pointer,
  * allowing for a consistent function prototype
  *
  * Return: 0 if set, else 1.
  */
 
-int check_setenvfunc(info_y *info)
+int check_setenv(info_s *info)
 {
 	if (info->argc != 3)
 	{
@@ -45,12 +45,12 @@ int check_setenvfunc(info_y *info)
 }
 
 /**
- * check_unsetenvfunc - Remove an environment variable
+ * check_unsetenv - Remove an environment variable
  * @info: contains simulated arguments for a function pointer,
  * allowing for a consistent function prototype
  * Return: Always 0
  */
-int check_unsetenvfunc(info_y *info)
+int check_unsetenv(info_s *info)
 {
 	int i;
 
@@ -66,12 +66,12 @@ int check_unsetenvfunc(info_y *info)
 }
 
 /**
- * gather_envfunc - populates env linked list
+ * gather_env - populates env linked list
  * @info: contains simulated arguments for a function pointer,
  * allowing for a consistent function prototype
  * Return: Always 0
  */
-int gather_envfunc(info_y *info)
+int gather_env(info_s *info)
 {
 	list_s *node = NULL;
 	size_t i;
@@ -88,7 +88,7 @@ int gather_envfunc(info_y *info)
  * allowing for a consistent function prototype
  * Return: Always 0
  */
-int _printenv(info_y *info)
+int _printenv(info_s *info)
 {
 	print_list_str(info->env);
 	return (0);
