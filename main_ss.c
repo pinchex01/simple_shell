@@ -26,11 +26,11 @@ int main(int argc, char **argv)
 
 			if (errno == ENOENT)
 			{
-				puts_err(argv[0]);
-				puts_err(": 0: Can't open ");
-				puts_err(argv[1]);
-				putchar_err('\n');
-				putchar_err(NEG_ONE);
+				_errput(argv[0]);
+				_errput(": 0: Can't open ");
+				_errput(argv[1]);
+				_putchar_err('\n');
+				_putchar_err(NEG_ONE);
 				exit(127);
 			}
 
@@ -40,8 +40,8 @@ int main(int argc, char **argv)
 		info->st_read = st;
 	}
 
-	gather_env(info);
-	read_history(info);
+	gather_envfunc(info);
+	read_history_func(info);
 	shell_main(info, argv);
 
 	return (EXIT_SUCCESS);
